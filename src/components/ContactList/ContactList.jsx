@@ -1,20 +1,33 @@
-import css from './ContactList.module.css';
+import { useSelector } from 'react-redux';
+import React from 'react';
+import Contact from '../Contact/Contact';
+import css from './ContactList.module.css'; 
+import { nanoid } from '@reduxjs/toolkit'; 
 
-export const ContactList = ({ contacts, handleDelete }) => (
-  <div> 
+export default function ContactList() {
+  const contacts = useSelector(state => state.contacts.contacts);
+  const filter = useSelector(state => state.filter);
+  console.log(filter);
+
+  let arrContacts = contacts;
+
+  if (filter.filter !== null) {
+    arrContacts = contacts.filter(({ name }) =>
+      name.toLowerCase().includes(filter.filter)
+    );
+  }
+  console.log(arrContacts);
+  const showArr = Array.isArray(arrContacts) && arrContacts.length;
+ 
+  return (
+  <div>  
     <ul className={css.contactList}>
-      {contacts.map((contact, id) => (
-        <li key={id} className={css.contactItem}>
-          {contact.name}: {contact.number}
-          <button
-            type="button"
-            className={css.contactBtn} 
-            onClick={() => handleDelete(contact.id)}
-          >
-            Delete 
-          </button>
-        </li>
-      ))}
-    </ul>
-  </div>
-);  
+       {showArr &&
+        arrContacts.map(({ id, name, number }) => {
+          return <Contact key={nanoid()} id={id} name={name} number={number} />;
+        })}  
+    </ul> 
+    </div >
+  ) 
+
+} 

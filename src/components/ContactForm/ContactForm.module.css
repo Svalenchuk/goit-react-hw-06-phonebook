@@ -1,34 +1,47 @@
 .form {
     display: flex;
-    flex-direction: column;
+        flex-direction: column;
+        justify-content: center;
+        align-items: flex-start;
+        width: 316px;
+        height: 200px; 
 } 
 
+.formLabel {
+    font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 5px;
+}
+ 
 .formInput {
-    display: flex;
-        flex-direction: column;
-        margin: 10px auto; 
-        align-items: center;
-        font-size: large;
-        text-align: left; 
+    display: block;
+        width: 300px;
+        height: 60px;
+        font-size: 16px;
+        font-weight: 400;
+        border-radius: 5px;
+        outline: rgb(36, 31, 107); 
+        border: 2px rgba(37, 40, 48, 0.8) solid;
+        padding: 0 8px 0 8px;
+        margin-bottom: 15px;     
+
 } 
 
 .formBtn {
-    margin-top: 14px;
-    margin-bottom: 30px;
+display: inline-block;
+    font-size: 14px;
+    font-weight: 700;
+    width: 320px;
+    height: 60px;
     background-color: rgba(37, 40, 48, 0.8);
     border: none;
     border-radius: 6px;
     color: white; 
-    flex-grow: 1;
-    font-size: 15px; 
-    height: 36px;
-    line-height: 20px;
-    margin-left: 8px;
-    margin-right: 6px;
-     padding: 0 16px 0 16px; 
-    color: white;
+    margin-right: auto;
+    margin-left: auto;
+    margin-bottom: 15px;
     cursor: pointer;   
-
+ 
 }
 
 .formBtn:hover { 
