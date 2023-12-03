@@ -10,7 +10,7 @@ export default function ContactForm() {
   const handleSubmit = event => {
     event.preventDefault();
     const hasContact = contacts.some(
-      contact => contact.name === event.target.elements.name.value
+      contact => contact.name.toLowerCase() === event.target.elements.name.value.toLowerCase()
     );
     if (hasContact) {
       alert(`${hasContact} is already in contacts`);
@@ -35,7 +35,7 @@ export default function ContactForm() {
           className={css.formInput}
           type="text"
           name="name"
-          pattern="^[a-zA-Zа-яА-Я]+(([' -][a-zA-Zа-яА-Я ])?[a-zA-Zа-яА-Я]*)*$"
+          pattern="^[a-zA-Zа-яА-Я\]+(([' \\-\][a-zA-Zа-яА-Я \])?[a-zA-Zа-яА-Я\]*)*$"
           title="Name may contain only letters, apostrophe, dash and spaces. For example Adrian, Jacob Mercer, Charles de Batz de Castelmore d'Artagnan"
           required
           placeholder="Enter name"
@@ -46,7 +46,7 @@ export default function ContactForm() {
           className={css.formInput}
           type="tel"
           name="number"
-          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          pattern="\\+?\\d{1,4}?[ .\\-\\s\]?\\(?\\d{1,3}?\\)?[ .\\-\\s\]?\\d{1,4}[ .\\-\\s\]?\\d{1,4}[ .\\-\\s\]?\\d{1,9}"
           title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
           required
           placeholder="Enter phone number" 
